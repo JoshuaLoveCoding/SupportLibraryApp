@@ -43,7 +43,8 @@ import com.raywenderlich.isell.ui.adapter.ItemsAdapter
 import com.raywenderlich.isell.util.DataProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), ItemsAdapter.OnItemClickListener,
+class MainActivity : AppCompatActivity(),
+        ItemsAdapter.OnItemClickListener,
         BottomNavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,6 +72,7 @@ class MainActivity : AppCompatActivity(), ItemsAdapter.OnItemClickListener,
         detailsIntent.putExtra(getString(R.string.bundle_extra_item), item)
         startActivity(detailsIntent)
     }
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

@@ -36,6 +36,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.raywenderlich.isell.R
 import com.raywenderlich.isell.data.Item
+import kotlinx.android.synthetic.main.activity_details.*
+import kotlinx.android.synthetic.main.content_details.*
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -47,6 +49,8 @@ class DetailsActivity : AppCompatActivity() {
 
     item = intent.getParcelableExtra(getString(R.string.bundle_extra_item))
     populateDetails(item)
+    setSupportActionBar(toolBar)
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
   }
 
   /**
@@ -64,7 +68,12 @@ class DetailsActivity : AppCompatActivity() {
    * Binds item details with views
    */
   private fun populateDetails(item: Item?) {
-
+    supportActionBar?.title = item?.category?.name
+    itemImageView.setImageResource(item?.imageId!!)
+    priceTextView.text = getString(R.string.currency_symbol) + item?.price.toString()
+    titleTextView.text = item?.title
+    detailsTextView.text = item?.details
   }
+
 
 }
